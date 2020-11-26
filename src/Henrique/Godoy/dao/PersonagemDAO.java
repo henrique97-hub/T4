@@ -74,6 +74,7 @@ public class PersonagemDAO implements DAO<Personagem> {
 
             int retorno = preparedStatement.executeUpdate();}
 
+
         catch (Exception e){
             e.printStackTrace();
         }
