@@ -1,12 +1,15 @@
 package Henrique.Godoy;
 
-import Henrique.Godoy.testes.Controlador;
+import Henrique.Godoy.testes.ControladorItens;
+import Henrique.Godoy.testes.ControladorPersonagem;
 
 public class Main {
 
     public static void main(String[] args) {
-        Controlador controlador = new Controlador();
-        controlador.run();
+//        ControladorPersonagem controlador = new ControladorPersonagem();
+//        controlador.run();
+        ControladorItens controladorItens = new ControladorItens();
+        controladorItens.run2();
 
 
     }

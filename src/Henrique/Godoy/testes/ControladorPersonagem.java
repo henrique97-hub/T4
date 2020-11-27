@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Controlador {
+public class ControladorPersonagem {
     private List<Personagem> personagems;
     private PersonagemDAO personagemDAO;
     private Scanner scanner;
 
-    public Controlador() {
+    public ControladorPersonagem() {
         personagems = new ArrayList<>();
         personagemDAO = new PersonagemDAO();
         scanner = new Scanner(System.in);
