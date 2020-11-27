@@ -33,6 +33,24 @@ public class Personagem {
 
     }
 
+    @Override
+    public String toString() {
+        return "Personagem{" +
+                "nome='" + nome + '\'' +
+                ", raca='" + raca + '\'' +
+                ", profissao='" + profissao + '\'' +
+                ", mana=" + mana +
+                ", ataque=" + ataque +
+                ", ataqueMagico=" + ataqueMagico +
+                ", defesa=" + defesa +
+                ", defesaMagica=" + defesaMagica +
+                ", velocidade=" + velocidade +
+                ", destreza=" + destreza +
+                ", experiencia=" + experiencia +
+                ", nivel=" + nivel +
+                '}';
+    }
+
     public String getNome() {
         return nome;
     }

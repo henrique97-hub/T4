@@ -52,7 +52,7 @@ public class Controlador {
         personagems = personagemDAO.getAll();
         System.out.println("Digite o nome o personagem para alterar: ");
         String nome =scanner.next();
-        System.out.println("Cadastre os novos dados: ");
+//        System.out.println("Cadastre os novos dados: ");
         String raca;
         String profissao;
         int mana;
