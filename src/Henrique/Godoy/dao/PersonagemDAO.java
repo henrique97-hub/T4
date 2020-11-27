@@ -10,55 +10,57 @@ import java.util.List;
 public class PersonagemDAO implements DAO<Personagem> {
 
     private Connection connection;
-    private String myDBConnection = "jbdc:sqlite:JogoRPG.db";
+    private String myDBConnectionString ="jdbc:sqlite:rpg.db";
 
-    // Contrutor que faz a concexão
-    public PersonagemDAO() {
+    public PersonagemDAO(){
         try {
-            connection = DriverManager.getConnection(myDBConnection);
-        } catch (SQLException e){
+            connection = DriverManager.getConnection(myDBConnectionString);
+        } catch (SQLException e) {
             e.printStackTrace();
-
         }
+
     }
+
 
     @Override
     public List<Personagem> getAll() {
-        List<Personagem> personagens = new ArrayList<>();
-        try{
+        List<Personagem> personagems = new ArrayList<>();
+        try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM personagem");
-            while(resultSet.next()){
+            ResultSet result = statement.executeQuery("SELECT * FROM rpg");
+            while(result.next()){
                 Personagem personagem = new Personagem(
-                        resultSet.getString("nome"),
-                        resultSet.getString("raca"),
-                        resultSet.getString("profissao"),
-                        resultSet.getInt("mana"),
-                        resultSet.getInt("ataque"),
-                        resultSet.getInt("ataqueMagico"),
-                        resultSet.getInt("defesa"),
-                        resultSet.getInt("defesaMagica"),
-                        resultSet.getInt("velocidade"),
-                        resultSet.getInt("destreza"),
-                        resultSet.getDouble("experiencia"),
-                        resultSet.getInt("nivel")
-
+                        result.getString("nome"),
+                        result.getString("raca"),
+                        result.getString("profissao"),
+                        result.getInt("mana"),
+                        result.getInt("ataque"),
+                        result.getInt("ataqueMagico"),
+                        result.getInt("defesa"),
+                        result.getInt("defesaMagica"),
+                        result.getInt("velocidade"),
+                        result.getInt("destreza"),
+                        result.getInt("experiencia"),
+                        result.getInt("nivel")
                 );
-                personagens.add(personagem);
-            }
-            resultSet.close();
+                personagems.add(personagem);
 
-        }catch (Exception e){
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return personagens;
-
+        return personagems;
     }
+
+
+
+
+
 
     @Override
     public void update(Personagem personagem) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE personagem SET nome=?,raca=?,profissao=?,mana=?,ataque=?,ataqueMagico=?,defesa=?,defesaMagica=?,velocidade = ?,destreza = ?,experiencia =?, nivel = ?;");
+        try {
+            PreparedStatement preparedStatement =connection.prepareStatement("UPDATE rpg SET nome =?, raca =?,profissao =?,mana=?,ataque=?,ataqueMagico=?,defesa=?,defesaMagica=?,velocidade=?,destreza=?,experiencia=?,nivel=? WHERE nome =?;");
             preparedStatement.setString(1,personagem.getNome());
             preparedStatement.setString(2,personagem.getRaca());
             preparedStatement.setString(3,personagem.getProfissao());
@@ -69,13 +71,14 @@ public class PersonagemDAO implements DAO<Personagem> {
             preparedStatement.setInt(8,personagem.getDefesaMagica());
             preparedStatement.setInt(9,personagem.getVelocidade());
             preparedStatement.setInt(10,personagem.getDestreza());
-            preparedStatement.setDouble(11,personagem.getExperiencia());
+            preparedStatement.setInt(11,personagem.getExperiencia());
             preparedStatement.setInt(12,personagem.getNivel());
+            preparedStatement.setString(13,personagem.getNome());
 
-            int retorno = preparedStatement.executeUpdate();}
+            int retorno = preparedStatement.executeUpdate();
 
 
-        catch (Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -84,8 +87,9 @@ public class PersonagemDAO implements DAO<Personagem> {
 
     @Override
     public void create(Personagem personagem) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO personagem (nome,raca,profissao,mana,ataque,ataqueMagico,defesa,defesaMagica,velocidade,destreza,experiencia,nivel) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);");
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO rpg (nome,raca,profissao,mana,ataque,ataqueMagico,defesa,defesaMagica,velocidade,destreza,experiencia,nivel) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);");
             preparedStatement.setString(1,personagem.getNome());
             preparedStatement.setString(2,personagem.getRaca());
             preparedStatement.setString(3,personagem.getProfissao());
@@ -96,25 +100,23 @@ public class PersonagemDAO implements DAO<Personagem> {
             preparedStatement.setInt(8,personagem.getDefesaMagica());
             preparedStatement.setInt(9,personagem.getVelocidade());
             preparedStatement.setInt(10,personagem.getDestreza());
-            preparedStatement.setDouble(11,personagem.getExperiencia());
+            preparedStatement.setInt(11,personagem.getExperiencia());
             preparedStatement.setInt(12,personagem.getNivel());
 
             int retorno = preparedStatement.executeUpdate();
-
-
-        }catch (Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
-    // deleta pelo nome, em vez de usar id
+
     @Override
     public void delete(Personagem personagem) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM personagem WHERE nome = ?");
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM rpg WHERE nome =?");
             preparedStatement.setString(1,personagem.getNome());
             preparedStatement.executeUpdate();
-
-        } catch (Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

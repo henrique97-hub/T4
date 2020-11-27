@@ -11,12 +11,10 @@ public class Personagem {
     private int defesaMagica;
     private int velocidade;
     private int destreza;
-    private double experiencia;
+    private int experiencia;
     private int nivel;
 
-    //Construtor
-
-    public Personagem(String nome, String raca, String profissao, int mana, int ataque, int ataqueMagico, int defesa, int defesaMagica, int velocidade, int destreza, double experiencia, int nivel) {
+    public Personagem(String nome, String raca, String profissao, int mana, int ataque, int ataqueMagico, int defesa, int defesaMagica, int velocidade, int destreza, int experiencia, int nivel) {
         this.nome = nome;
         this.raca = raca;
         this.profissao = profissao;
@@ -30,28 +28,9 @@ public class Personagem {
         this.experiencia = experiencia;
         this.nivel = nivel;
     }
-
     public Personagem(String nome){
-        this(nome,null,null, 0, 0, 0,  0,  0,  0, 0,  0.0,  0);
+        this(nome,null,null,0,0,0,0,0,0,0,0,0);
 
-    }
-
-    @Override
-    public String toString() {
-        return "Personagem{" +
-                "nome='" + nome + '\'' +
-                ", raca='" + raca + '\'' +
-                ", profissao='" + profissao + '\'' +
-                ", mana=" + mana +
-                ", ataque=" + ataque +
-                ", ataqueMagico=" + ataqueMagico +
-                ", defesa=" + defesa +
-                ", defesaMagica=" + defesaMagica +
-                ", velocidade=" + velocidade +
-                ", destreza=" + destreza +
-                ", experiencia=" + experiencia +
-                ", nivel=" + nivel +
-                '}';
     }
 
     public String getNome() {
@@ -94,7 +73,7 @@ public class Personagem {
         return destreza;
     }
 
-    public double getExperiencia() {
+    public int getExperiencia() {
         return experiencia;
     }
 
