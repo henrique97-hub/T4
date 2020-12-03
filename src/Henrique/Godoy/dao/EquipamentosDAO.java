@@ -7,11 +7,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe EquipamentosDAO implementa a iterface DAO e sobrescreve seus métodos
+ */
 public class EquipamentosDAO implements DAO<Equipamentos> {
 
     private Connection connection;
     private String myDBConnectionString = "jdbc:sqlite:rpg.db";
 
+    /**
+     * Construtor que possibilita a conexão com o banco de dados
+     */
     public EquipamentosDAO(){
         try {
             connection = DriverManager.getConnection(myDBConnectionString);
@@ -22,6 +28,9 @@ public class EquipamentosDAO implements DAO<Equipamentos> {
     }
 
 
+    /** Método que retorna todos os equipamentos que pertencem à tabela
+     * @return lista de equipamentos
+     */
     @Override
     public List<Equipamentos> getAll() {
 
@@ -47,6 +56,10 @@ public class EquipamentosDAO implements DAO<Equipamentos> {
     }
 
 
+    /** Método que permite atualizar valores de atributos referentes a equipamentos, perante ao
+     * nome digitado
+     * @param equipamentos
+     */
     @Override
     public void update(Equipamentos equipamentos) {
         try {
@@ -55,7 +68,8 @@ public class EquipamentosDAO implements DAO<Equipamentos> {
             preparedStatement.setString(2, equipamentos.getTipo());
             preparedStatement.setInt(3, equipamentos.getPoderDeDefesa());
             preparedStatement.setInt(4, equipamentos.getDefesaNecessaria());
-            preparedStatement.setString(5, equipamentos.getNome());
+            preparedStatement.setString(5, equipamentos.getBeneficio());
+            preparedStatement.setString(6, equipamentos.getNome());
             int retorno = preparedStatement.executeUpdate();
 
 
@@ -66,6 +80,9 @@ public class EquipamentosDAO implements DAO<Equipamentos> {
 
     }
 
+    /** Método create, permite cirar novos equipamentos para serem adicionados à tabela
+     * @param equipamentos
+     */
     @Override
     public void create(Equipamentos equipamentos) {
         try {
@@ -84,7 +101,9 @@ public class EquipamentosDAO implements DAO<Equipamentos> {
     }
 
 
-
+    /** Método que permite deletar equipamentos da tabela
+     * @param equipamentos
+     */
     @Override
     public void delete(Equipamentos equipamentos) {
         try {

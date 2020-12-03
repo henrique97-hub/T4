@@ -3,9 +3,15 @@ package Henrique.Godoy.parser;
 import Henrique.Godoy.model.Equipamentos;
 import org.json.JSONObject;
 
-//(s) nome, (s) tipo, (i) poderDeDefesa, (i) defesaNecessaria, (s)beneficio
 
+/**
+ * Classe que faz a leitura e a escrita de arquivos json
+ */
 public class EquipamentosParser {
+    /** Recebe um equipamento e transforma-o em arquivo json
+     * @param equipamentos
+     * @return json
+     */
     public static JSONObject toJson(Equipamentos equipamentos){
         JSONObject json = new JSONObject();
         json.put("nome",equipamentos.getNome());
@@ -16,6 +22,11 @@ public class EquipamentosParser {
         return json;
 
     }
+
+    /** Recebe um arquivo json e tranforma-o em equipamento
+     * @param json
+     * @return equipamentos
+     */
     public static Equipamentos fromJson(JSONObject json){
         Equipamentos equipamentos = new Equipamentos(
                 json.getString("nome"),

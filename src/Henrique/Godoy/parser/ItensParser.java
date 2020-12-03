@@ -3,9 +3,15 @@ package Henrique.Godoy.parser;
 import Henrique.Godoy.model.Itens;
 import org.json.JSONObject;
 
-// (s)nome,(s)tipo,(i)poderDeAtaque, (i)velocidadeArma, (i)ataqueNecessario, (d)critico e (s)beneficio
 
+/**
+ * Classe que possibilitará leitura/escrita de dados em json
+ */
 public class ItensParser {
+    /** toJson - recebe um item e transforma-o em arquivo json
+     * @param itens
+     * @return - json
+     */
     public static JSONObject toJson(Itens itens){
         JSONObject json = new JSONObject();
         json.put("nome",itens.getNome());
@@ -18,6 +24,11 @@ public class ItensParser {
         return json;
 
     }
+
+    /** Recebe um arquivo json e transforma-o em lista de item
+     * @param json
+     * @return itens
+     */
     public static Itens fromJson(JSONObject json){
         Itens itens = new Itens(
                 json.getString("nome"),

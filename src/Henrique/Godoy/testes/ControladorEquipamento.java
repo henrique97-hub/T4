@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe que contém todos os métodos necessarios de Equipamentos, para
+ * executar o programa
+ */
 public class ControladorEquipamento {
 
     private List<Equipamentos> equipamentos;
@@ -74,7 +78,7 @@ public class ControladorEquipamento {
         poderDeAtaque =Integer.parseInt(scanner.next());
         poderDeDefesa =Integer.parseInt(scanner.next());
         defesaNecessaria =Integer.parseInt(scanner.next());
-        beneficio =scanner.nextLine();
+        beneficio =scanner.next();
         equipamentosDAO.update(new Equipamentos(
                 nome,tipo,poderDeAtaque,poderDeDefesa,beneficio
         ));
@@ -107,7 +111,7 @@ public class ControladorEquipamento {
         tipo = scanner.next();
         poderDeDefesa = Integer.parseInt(scanner.next());
         defesaNecessaria = Integer.parseInt(scanner.next());
-        beneficio = scanner.nextLine();
+        beneficio = scanner.next();
         equipamentosDAO.create(new Equipamentos(
                 nome,tipo,poderDeDefesa,defesaNecessaria,beneficio
 

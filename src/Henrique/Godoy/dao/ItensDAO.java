@@ -95,11 +95,10 @@ public class ItensDAO implements DAO<Itens> {
             preparedStatement.setString(1, itens.getNome());
             preparedStatement.setString(2, itens.getTipo());
             preparedStatement.setInt(3, itens.getPoderDeAtaque());
-            preparedStatement.setInt(5, itens.getVelocidadeArma());
-            preparedStatement.setInt(6, itens.getAtaqueNecessario());
-            preparedStatement.setDouble(7, itens.getCritico());
-            preparedStatement.setString(8, itens.getBeneficio());
-            preparedStatement.setString(9, itens.getNome());
+            preparedStatement.setInt(4, itens.getVelocidadeArma());
+            preparedStatement.setInt(5, itens.getAtaqueNecessario());
+            preparedStatement.setDouble(6, itens.getCritico());
+            preparedStatement.setString(7, itens.getBeneficio());
             int retorno = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

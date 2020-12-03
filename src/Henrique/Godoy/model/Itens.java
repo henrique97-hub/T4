@@ -10,7 +10,7 @@ public class Itens {
     private int poderDeAtaque;
     private int velocidadeArma;
     private int ataqueNecessario;
-    private double critico;
+    private Double critico;
     private String beneficio;
 
     /** Contrutor da classe
