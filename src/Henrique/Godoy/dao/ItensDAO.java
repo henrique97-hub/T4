@@ -7,11 +7,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * A classe ItensDAO possui a implementação da interface DAO, juntamente com suas implementações de
+ * métodos.
+ */
 public class ItensDAO implements DAO<Itens> {
 
     private Connection connection;
     private String myDBConnectionString = "jdbc:sqlite:rpg.db";
 
+    /**
+     * Contrutor que possibilita a conexão da classe ao banco de dados
+     */
     public ItensDAO() {
         try {
             connection = DriverManager.getConnection(myDBConnectionString);
@@ -21,6 +29,9 @@ public class ItensDAO implements DAO<Itens> {
 
     }
 
+    /** Método getAll
+     * @return exibe todos os parametros que existem dentro da tabela itens
+     */
     @Override
     public List<Itens> getAll() {
 
@@ -48,6 +59,9 @@ public class ItensDAO implements DAO<Itens> {
     }
 
 
+    /** Atualiza os itens da tabela, por meio de seus nomes
+     * @param itens
+     */
     @Override
     public void update(Itens itens) {
 
@@ -71,6 +85,9 @@ public class ItensDAO implements DAO<Itens> {
 
     }
 
+    /** Método create
+     * @param itens - permite a criação de novos itens na tabela do banco de dados
+     */
     @Override
     public void create(Itens itens) {
         try {
@@ -91,6 +108,9 @@ public class ItensDAO implements DAO<Itens> {
     }
 
 
+    /** Método que permite deletar itens do banco de dados, de acordo com seus respectivos nomes
+     * @param itens
+     */
     @Override
     public void delete(Itens itens) {
 

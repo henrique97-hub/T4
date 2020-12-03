@@ -3,7 +3,16 @@ import org.json.JSONObject;
 
 import Henrique.Godoy.model.Personagem;
 
+/**
+ * Classe que possibilitará a leitura e escrita de dados Json
+ * {chave:valor}
+ */
 public class PersonagemParser {
+    /**
+     * toJson- recebe um personagem e transforma-o em arquivo json
+     * @param personagem
+     * @return arquivo JSON
+     */
     public static JSONObject toJson(Personagem personagem){
         JSONObject json = new JSONObject();
         json.put("nome",personagem.getNome());
@@ -20,6 +29,11 @@ public class PersonagemParser {
         json.put("nivel",personagem.getNivel());
         return json;
     }
+
+    /** recebe um arquivo json e transforma-o em personagem
+     * @param json - dados do personagem
+     * @return retorna o personagem com os seus dados neste formato apresentado
+     */
     public static Personagem fromJson(JSONObject json){
         Personagem personagem = new Personagem(
                 json.getString("nome"),

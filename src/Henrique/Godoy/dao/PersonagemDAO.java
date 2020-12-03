@@ -7,11 +7,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A classe PersonagemDAO possui a implementação da interdace DAO,
+ * juntamente da sua implementação de métodos.
+ */
 public class PersonagemDAO implements DAO<Personagem> {
 
     private Connection connection;
     private String myDBConnectionString ="jdbc:sqlite:rpg.db";
 
+    /**
+     * Construtor que cria a conexão com o banco de dados
+     */
     public PersonagemDAO(){
         try {
             connection = DriverManager.getConnection(myDBConnectionString);
@@ -22,6 +29,9 @@ public class PersonagemDAO implements DAO<Personagem> {
     }
 
 
+    /** Método getAll
+     * @return exibe todos os parametros referentes a tabela dos personagens
+     */
     @Override
     public List<Personagem> getAll() {
         List<Personagem> personagems = new ArrayList<>();
@@ -53,10 +63,10 @@ public class PersonagemDAO implements DAO<Personagem> {
     }
 
 
-
-
-
-
+    /** Método update
+     * @param personagem - atualiza a tabela com nova implementação de dados de personagem,
+     * para isso, é preciso informar o nome do personagem no qual as implementações serão realizadas.
+     */
     @Override
     public void update(Personagem personagem) {
         try {
@@ -85,6 +95,9 @@ public class PersonagemDAO implements DAO<Personagem> {
 
     }
 
+    /** Método criar
+     * @param personagem permite criar um novo personagem no banco de dados
+     */
     @Override
     public void create(Personagem personagem) {
 
@@ -110,6 +123,9 @@ public class PersonagemDAO implements DAO<Personagem> {
 
     }
 
+    /** Método delete
+     * @param personagem - método que permite deletar algum personagem de acordo com seu nome
+     */
     @Override
     public void delete(Personagem personagem) {
         try {
